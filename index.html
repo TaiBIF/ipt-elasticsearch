@@ -1,0 +1,56 @@
+<html ng-app='emlQueryApp'>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" , rel="stylesheet">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/emlQueryController.js"></script>
+
+    <style>
+        html {
+            font-size: 1rem
+        }
+        
+        .row-bordered:after {
+            content: "";
+            display: block;
+            border-bottom: 1px solid #ccc;
+            margin: 0 15px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body ng-controller='emlQueryController'>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-3'>
+                <div class='inline'><label for='input_q'>查詢</label> <input id='input_q' name='q' ng-model='q' ng-keypress='enterToSubmit($event)' /><button ng-click='getEml()'>送出</button></div>
+            </div>
+            <div class='col-2 text-left'>共 {{eml_total}} 個資料集，計：{{num_of_occurrence | number}} 筆</div>
+        </div>
+        <div class='row row-bordered'>
+            <div class='col-1'>No.</div>
+            <div class='col-1 text-right'>Records</div>
+            <div class='col-5'>Title</div>
+            <div class='col-2'>Contacts</div>
+            <div class='col-1'>Funding</div>
+        </div>
+        <div class='row row-bordered' ng-repeat="eml_data in eml_list track by $index">
+            <div class='col-1'>{{$index + 1}}</div>
+            <div class='col-1 text-right'>{{eml_data.num_of_occurrence | number}}</div>
+            <div class='col-5'><a ng-href="{{eml_data.link}}" target='_blank'>{{eml_data.title}}</a></div>
+            <div class='col-2' ng-bind-html="htmlMe(eml_data.contacts)"></div>
+            <div class='col-1'>{{eml_data.project_funding}}</div>
+        </div>
+    </div>
+
+</body>
