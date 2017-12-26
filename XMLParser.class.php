@@ -19,11 +19,10 @@ class XMLParser  {
     public function XMLParser($xml){
         $this->rawXML = $xml;
         $this->parser = xml_parser_create();
-        return $this->mai_parse();
         return $this->parse();
     }
 
-    private function mai_parse(){
+    private function parse(){
 
         $parser = $this->parser;
         
