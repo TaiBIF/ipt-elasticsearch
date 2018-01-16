@@ -28,19 +28,29 @@ app.controller('emlQueryController', ['$scope', 'postService', '$sce', function 
           } catch (err) {}
           eml_item.num_of_occurrence = eml._source.num_of_occurrence;
           eml_item.link = eml._source.eml_link;
+          eml_item.id = eml._source.eml_link.split('=').pop();
           $scope.num_of_occurrence += eml_item.num_of_occurrence;
 
           var contacts;
           var eml_contacts = [];
+          var eml_contact_emails = [];
+          var eml_contact_positions = [];
           var givenName = '#N/A';
           var surName = '#N/A';
           var email = '#N/A';
+          var positionName = '#N/A';
           try {
             contacts = eml._source.eml_eml[0].dataset[0].contact;
             contacts.forEach(function(contact) {
               givenName = '#N/A';
               surName = '#N/A';
+              positionName = '';
               email = '';
+
+              try {
+                positionName = contact.positionName[0]._value;
+              } catch (err) {}
+
               try {
                 givenName = contact.individualName[0].givenName[0]._value;
               } catch (err) {}
@@ -56,6 +66,8 @@ app.controller('emlQueryController', ['$scope', 'postService', '$sce', function 
 
             var _contact = (!!email)?('<a href="mailto:' + email + '" target="_blank">' + givenName + ' ' + surName + '</a>'):(givenName + ' ' + surName);
             eml_contacts.push(_contact);
+            eml_contact_emails.push(email);
+            eml_contact_positions.push(positionName);
 
           } catch (err) {}
 
@@ -66,6 +78,8 @@ app.controller('emlQueryController', ['$scope', 'postService', '$sce', function 
           catch (err) {}
 
           eml_item.contacts =  eml_contacts.join(', ');
+          eml_item.contact_emails = eml_contact_emails.join(', ');
+          eml_item.contact_positions = eml_contact_positions.join(', ');
           eml_item.project_funding = project_funding;
           $scope.eml_list.push(eml_item);
         });
@@ -103,5 +117,6 @@ app.factory('postService', ['$http', function($http) {
   }
   return {post: post}
 }]);
+
 
 

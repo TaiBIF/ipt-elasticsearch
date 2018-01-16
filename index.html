@@ -39,16 +39,22 @@
         </div>
         <div class='row row-bordered'>
             <div class='col-1'>No.</div>
+            <div class='col-1'>ID.</div>
             <div class='col-1 text-right'>Records</div>
-            <div class='col-5'>Title</div>
-            <div class='col-2'>Contacts</div>
+            <div class='col-4'>Title</div>
+            <div class='col-1'>Contacts</div>
+            <div class='col-1'>Positions</div>
+            <div class='col-2'>Emails</div>
             <div class='col-1'>Funding</div>
         </div>
         <div class='row row-bordered' ng-repeat="eml_data in eml_list track by $index">
             <div class='col-1'>{{$index + 1}}</div>
+            <div class='col-1'>{{eml_data.id}}</div>
             <div class='col-1 text-right'>{{eml_data.num_of_occurrence | number}}</div>
-            <div class='col-5'><a ng-href="{{eml_data.link}}" target='_blank'>{{eml_data.title}}</a></div>
-            <div class='col-2' ng-bind-html="htmlMe(eml_data.contacts)"></div>
+            <div class='col-4'><a ng-href="{{eml_data.link}}" target='_blank'>{{eml_data.title}}</a></div>
+            <div class='col-1' ng-bind-html="htmlMe(eml_data.contacts)"></div>
+            <div class='col-1' ng-bind-html="htmlMe(eml_data.contact_positions)"></div>
+            <div class='col-2' ng-bind-html="htmlMe(eml_data.contact_emails)"></div>
             <div class='col-1'>{{eml_data.project_funding}}</div>
         </div>
     </div>
