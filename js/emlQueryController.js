@@ -40,12 +40,15 @@ app.controller('emlQueryController', ['$scope', 'postService', '$sce', function 
           var email = '#N/A';
           var positionName = '#N/A';
           try {
+            var _contacts = [];
+            var _emails = [];
+            var _positions = [];
             contacts = eml._source.eml_eml[0].dataset[0].contact;
             contacts.forEach(function(contact) {
               givenName = '#N/A';
               surName = '#N/A';
-              positionName = '';
-              email = '';
+              positionName = '#N/A';
+              email = '#N/A';
 
               try {
                 positionName = contact.positionName[0]._value;
@@ -62,12 +65,17 @@ app.controller('emlQueryController', ['$scope', 'postService', '$sce', function 
               try {
                 email = contact.electronicMailAddress[0]._value;
               } catch (err) {}
+
+              var _contact = (email !== '#N/A')?('<a href="mailto:' + email + '" target="_blank">' + givenName + ' ' + surName + '</a>'):(givenName + ' ' + surName);
+              _contacts.push(_contact);
+              _emails.push(email);
+              _positions.push(positionName);
+
             });
 
-            var _contact = (!!email)?('<a href="mailto:' + email + '" target="_blank">' + givenName + ' ' + surName + '</a>'):(givenName + ' ' + surName);
-            eml_contacts.push(_contact);
-            eml_contact_emails.push(email);
-            eml_contact_positions.push(positionName);
+            eml_contacts.push(_contacts.join(', '));
+            eml_contact_emails.push(_emails.join(', '));
+            eml_contact_positions.push(_positions.join(', '));
 
           } catch (err) {}
 

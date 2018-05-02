@@ -1,0 +1,84 @@
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+
+<script>
+
+
+function drawAreaChart (data) {
+
+  Highcharts.chart('container', {
+    chart: {
+      type: 'area'
+    },
+    title: {
+      text: 'Number of Occurrences in TaiBIF IPT (Randomly Generalized)'
+    },
+    subtitle: {
+      text: 'Source: ipt.taibif.tw'
+    },
+    xAxis: {
+      categories: data['dates'],
+      tickmarkPlacement: 'on',
+      title: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'NumOfOccurrences'
+      },
+      labels: {
+        formatter: function () {
+          return this.value;
+        }
+      }
+    },
+    tooltip: {
+      split: true,
+      valueSuffix: ''
+    },
+    plotOptions: {
+      area: {
+        stacking: 'normal',
+        lineColor: '#666666',
+        lineWidth: 1,
+        marker: {
+          lineWidth: 1,
+          lineColor: '#666666'
+        }
+      }
+    },
+    series: data['data']
+  });
+}
+
+
+var query = (function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+
+    var params = {}, tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])]
+            = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+})(document.location.search)
+
+jQuery.get("data/json/" + query.data).done(function(res){
+  drawAreaChart(res);
+});
+
+
+
+
+</script>
+
