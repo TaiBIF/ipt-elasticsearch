@@ -47,6 +47,7 @@ $dates = $ret['dates'];
 
 $is_header = true;
 $str_out = "";
+$snapshot = [];
 foreach ($dates as $date) {
 	if ($is_header) {
 		$is_header = false;
@@ -55,11 +56,19 @@ foreach ($dates as $date) {
 	$str_out .= $date . "\t";
 	$vals = [];
 	foreach ($dataset_names as $name) {
-		$vals[] = empty($data[$name][$date])?0:$data[$name][$date];
+		$tmp_val = empty($data[$name][$date])?0:$data[$name][$date];
+		$vals[] = $tmp_val;
+		$snapshot[$name] = $tmp_val;
 	}
 	$str_out .= implode("\t", $vals) . "\n";
 }
 file_put_contents(__DIR__."/data/tsv/ipt_statistics_$src".$start_year.$start_month."-".$current_year.$current_month.".tsv", $str_out);
+
+$snap = "";
+foreach ($snapshot as $name => $val) {
+	$snap .= $name . "\t" . $val . "\n";
+}
+file_put_contents(__DIR__."/data/tsv/ipt_statistics_snapshot_$src".$current_year.$current_month.".tsv", $snap);
 
 $series_data = [];
 foreach ($dataset_names as $name) {
