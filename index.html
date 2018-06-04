@@ -51,7 +51,7 @@
             <div class='col-1'>{{$index + 1}}</div>
             <div class='col-1'>{{eml_data.id}}</div>
             <div class='col-1 text-right'>{{eml_data.num_of_occurrence | number}}</div>
-            <div class='col-4'><a ng-href="{{eml_data.link}}" target='_blank'>{{eml_data.title}}</a></div>
+            <div class='col-4'>[<a ng-href="{{eml_data.link}}" target='_blank'>EML</a>] [<a target="_blank" ng-href="//ipt.taibif.tw/resource?r={{eml_data.id}}">IPT</a>] {{eml_data.title}}</div>
             <div class='col-1' ng-bind-html="htmlMe(eml_data.contacts)"></div>
             <div class='col-1' ng-bind-html="htmlMe(eml_data.contact_positions)"></div>
             <div class='col-2' ng-bind-html="htmlMe(eml_data.contact_emails)"></div>
