@@ -11,5 +11,6 @@
 ## Crontab
 ```
 0 3 * * * /path/to/bin/php /path/to/es_put_eml.php -f
+# 需要先設定好 github 免密碼認證
 0 5 * * 6 /path/to/bin/php /path/to/es_put_eml.php && /path/to/bin/php /path/to/gen_data_for_viz.php && /path/to/bin/php /path/to/git_commit_data.php
 ```
