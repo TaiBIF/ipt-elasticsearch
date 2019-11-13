@@ -1,0 +1,26 @@
+/opt/jdk1.8.0_152
+[2018-04-30 10:44:00,895][INFO ][node                     ] [TaiBIF IPT] version[1.7.3], pid[16443], build[NA/NA]
+[2018-04-30 10:44:00,895][INFO ][node                     ] [TaiBIF IPT] initializing ...
+[2018-04-30 10:44:01,050][INFO ][plugins                  ] [TaiBIF IPT] loaded [], sites []
+[2018-04-30 10:44:01,100][INFO ][env                      ] [TaiBIF IPT] using [1] data paths, mounts [[/ (/dev/mapper/BIF02--vg-root)]], net usable_space [545.4gb], net total_space [1.1tb], types [ext4]
+[2018-04-30 10:44:03,188][INFO ][node                     ] [TaiBIF IPT] initialized
+[2018-04-30 10:44:03,188][INFO ][node                     ] [TaiBIF IPT] starting ...
+[2018-04-30 10:44:03,358][INFO ][transport                ] [TaiBIF IPT] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/140.109.28.80:9300]}
+[2018-04-30 10:44:03,378][INFO ][discovery                ] [TaiBIF IPT] elasticsearch/MAC-An2eQtuFW4Sw7b_A4Q
+[2018-04-30 10:44:07,167][INFO ][cluster.service          ] [TaiBIF IPT] new_master [TaiBIF IPT][MAC-An2eQtuFW4Sw7b_A4Q][BIF02][inet[/140.109.28.80:9300]], reason: zen-disco-join (elected_as_master)
+[2018-04-30 10:44:07,296][INFO ][http                     ] [TaiBIF IPT] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/140.109.28.80:9200]}
+[2018-04-30 10:44:07,296][INFO ][node                     ] [TaiBIF IPT] started
+[2018-04-30 10:44:07,304][INFO ][gateway                  ] [TaiBIF IPT] recovered [1] indices into cluster_state
+[2018-04-30 10:45:10,308][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] creating index, cause [auto(index api)], templates [], shards [1]/[0], mappings [eml]
+[2018-04-30 10:45:10,473][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:45:10,624][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:45:10,703][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:45:10,752][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:45:10,790][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:56,230][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:56,266][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:56,526][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:56,625][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:57,318][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:58,696][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
+[2018-04-30 10:51:59,050][INFO ][cluster.metadata         ] [TaiBIF IPT] [taibif_ipt] update_mapping [eml] (dynamic)
