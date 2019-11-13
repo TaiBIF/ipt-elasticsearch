@@ -51,3 +51,8 @@ eml/*
 *.lock
 
 vendor/*
+
+db_config.php
+
+git_commit_data.php
+
