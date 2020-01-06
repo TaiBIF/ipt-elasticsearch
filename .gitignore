@@ -51,3 +51,5 @@ eml/*
 *.lock
 
 vendor/*
+
+.idea/
